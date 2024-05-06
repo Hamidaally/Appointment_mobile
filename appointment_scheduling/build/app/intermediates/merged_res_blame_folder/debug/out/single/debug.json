@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/drawable_launch_background.xml.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/drawable_flutter_logo.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/drawable/flutter_logo.png"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.mycompany.appointmentscheduling.app-merged_res-35:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.mycompany.appointmentscheduling.app-main-28:/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]
