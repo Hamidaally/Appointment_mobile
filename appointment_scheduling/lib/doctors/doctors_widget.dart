@@ -137,7 +137,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      16.0, 4.0, 16.0, 0.0),
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
@@ -241,6 +242,7 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                       FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Raleway',
                             letterSpacing: 0.0,
+                            color: Colors.black,
                           ),
                 ),
                 Row(
@@ -248,8 +250,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'Patients matching search',
                         style:
@@ -263,8 +265,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(4.0, 12.0, 16.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          4.0, 12.0, 16.0, 0.0),
                       child: Text(
                         '24',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -280,7 +282,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        8.0, 8.0, 8.0, 0.0),
                     child: StreamBuilder<List<UsersRecord>>(
                       stream: queryUsersRecord(
                         queryBuilder: (usersRecord) => usersRecord.where(
@@ -378,8 +381,9 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     listViewUsersRecord
@@ -390,8 +394,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF14181B),
+                                                          color: const Color(
+                                                              0xFF14181B),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -400,8 +404,9 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -410,11 +415,8 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                       Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(12.0,
+                                                                0.0, 10.0, 0.0),
                                                         child: Text(
                                                           dateTimeFormat(
                                                               'MMMEd',
@@ -450,10 +452,10 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                           padding:
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
                                                           child: Builder(
                                                             builder: (context) {
                                                               final availableSlots = functions
@@ -495,10 +497,10 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                                   return Padding(
                                                                     padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0,
+                                                                        0.0),
                                                                     child:
                                                                         InkWell(
                                                                       splashColor:
@@ -517,7 +519,7 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                                                                           () async {
                                                                         await showModalBottomSheet(
                                                                           isScrollControlled:
-                                                                              true,
+                                                                              false,
                                                                           backgroundColor:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                           enableDrag:

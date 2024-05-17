@@ -4,7 +4,7 @@
             "outputFile": "com.mycompany.appointmentscheduling.app-mergeDebugResources-33:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hamida\\.gradle\\caches\\transforms-3\\f009572fa9d3826fa509854a45b726ac\\transformed\\appcompat-1.2.0\\res\\values-v24\\values-v24.xml",
+                    "source": "/home/faj/.gradle/caches/transforms-3/10f496cee22c4c875dc3990de4c26813/transformed/appcompat-1.2.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hamida\\.gradle\\caches\\transforms-3\\c54744d10f73b6b1277b035da11d1fa6\\transformed\\media-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "/home/faj/.gradle/caches/transforms-3/02d81da43224552c23d2b971a6b2cafd/transformed/media-1.1.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

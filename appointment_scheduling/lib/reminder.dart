@@ -15,13 +15,15 @@ class _ReminderState extends State<Reminder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Set Appointment Reminder"),),
-       body: Center(
+      appBar: AppBar(
+        title: const Text("Set Appointment Reminder"),
+      ),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             DatePickerTxt(),
-             ScheduleBtn(),
+            ScheduleBtn(),
           ],
         ),
       ),
@@ -39,20 +41,20 @@ class DatePickerTxt extends StatefulWidget {
 }
 
 class _DatePickerTxtState extends State<DatePickerTxt> {
-  
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-       BottomPicker.dateTime(
-    dismissable: true,
-    initialDateTime: DateTime.now(),
-    pickerTitle: const Text("Schedule notification"),
-    onChange: (value) {},
-    onSubmit: (value) {
-    scheduleTime = value;
-    },
-  ).show(context);
+        BottomPicker.dateTime(
+          dismissable: true,
+          initialDateTime: DateTime.now().add(Duration(minutes: 30)),
+          minDateTime: DateTime.now(),
+          pickerTitle: const Text("Schedule notification"),
+          onChange: (value) {},
+          onSubmit: (value) {
+            scheduleTime = value;
+          },
+        ).show(context);
       },
       child: const Text(
         'Select Date Time',

@@ -1,0 +1,1 @@
+ /home/faj/Desktop/Appointment_mobile/appointment_scheduling/.dart_tool/flutter_build/d22f0d93d172affa7027d0f862b1c5f9/native_assets.yaml: 

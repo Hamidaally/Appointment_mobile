@@ -140,11 +140,12 @@ class FirebaseAuthManager extends AuthManager
     String email,
     String password,
   ) =>
-      _signInOrCreateAccount(
-        context,
-        () => emailCreateAccountFunc(email, password),
-        'EMAIL',
-      );
+      _createAccount(context, 'EMAIL', email, password);
+  // _signInOrCreateAccount(
+  //   context,
+  //   () => emailCreateAccountFunc(email, password),
+  //   'EMAIL',
+  // );
 
   @override
   Future<BaseAuthUser?> signInAnonymously(
@@ -212,8 +213,8 @@ class FirebaseAuthManager extends AuthManager
     // * Finally modify verificationCompleted below as instructed.
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      timeout:
-          const Duration(seconds: 0), // Skips Android's default auto-verification
+      timeout: const Duration(
+          seconds: 0), // Skips Android's default auto-verification
       verificationCompleted: (phoneAuthCredential) async {
         await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
         phoneAuthManager.update(() {
@@ -283,6 +284,7 @@ class FirebaseAuthManager extends AuthManager
     try {
       final userCredential = await signInFunc();
       if (userCredential?.user != null) {
+        print("maybe creating");
         await maybeCreateUser(userCredential!.user!);
       }
       return userCredential == null
@@ -303,5 +305,53 @@ class FirebaseAuthManager extends AuthManager
       );
       return null;
     }
+  }
+
+  Future<BaseAuthUser?> _createAccount(
+    BuildContext context,
+    String authProvider,
+    String email,
+    String password,
+  ) async {
+    UserCredential? userCredential =
+        await emailCreateAccountFunc(email, password).then((_) => _,
+            onError: (err) {
+      final error = err as FirebaseAuthException;
+      final errorMsg = switch (error.code) {
+        'email-already-in-use' =>
+          'Error: The email is already in use by a different account',
+        'INVALID_LOGIN_CREDENTIALS' =>
+          'Error: The supplied auth credential is incorrect, malformed or has expired',
+        _ => 'Error: ${error.message!}',
+      };
+      if (error.code == 'email-already-in-use') {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(errorMsg)),
+        );
+      }
+      return null;
+    });
+    return userCredential == null
+        ? null
+        : AppointmentSchedulingFirebaseUser.fromUserCredential(userCredential);
+    // } on FirebaseAuthException catch (e) {
+    //   final errorMsg = switch (e.code) {
+    //     'email-already-in-use' =>
+    //       'Error: The email is already in use by a different account',
+    //     'INVALID_LOGIN_CREDENTIALS' =>
+    //       'Error: The supplied auth credential is incorrect, malformed or has expired',
+    //     _ => 'Error: ${e.message!}',
+    //   };
+    //   ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(content: Text(errorMsg)),
+    //   );
+    //   if (e.code == 'email-already-in-use') {
+    //     return null;
+    //   }else{
+    //     return userCr
+    //   }
+    // }
   }
 }

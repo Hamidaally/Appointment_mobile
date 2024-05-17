@@ -1,4 +1,5 @@
 import 'package:appointment_scheduling/reminder.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
@@ -84,7 +85,8 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
@@ -149,7 +151,8 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
                   child: StreamBuilder<List<AppointmentsRecord>>(
                     stream: queryAppointmentsRecord(
                       queryBuilder: (appointmentsRecord) => appointmentsRecord
@@ -243,8 +246,9 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   containerUsersRecord
@@ -255,8 +259,8 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF14181B),
+                                                        color: const Color(
+                                                            0xFF14181B),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -265,8 +269,9 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -275,11 +280,8 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  12.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
+                                                              .fromSTEB(12.0,
+                                                              0.0, 10.0, 0.0),
                                                       child: Text(
                                                         dateTimeFormat(
                                                             'M/d H:mm',
@@ -309,22 +311,161 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
                                             ],
                                           ),
                                         ),
-                                         GestureDetector(
-                                             onTap: (){
-Navigator.push(context, MaterialPageRoute(builder: (context) => const Reminder()),);
-                                             },
-                                        child: Icon(
-                                          Icons.notifications_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const Reminder()),
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.notifications_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
                                         ),
-                                         ),
-                                        Icon(
-                                          Icons.edit_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 24.0,
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            showModalBottomSheet(
+                                              showDragHandle: true,
+                                              shape: ContinuousRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              backgroundColor:
+                                                  Theme.of(context).cardColor,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets
+                                                              .bottom),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      const Text(
+                                                        "Edit Appointment",
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      ListTile(
+                                                        leading: CircleAvatar(
+                                                          backgroundImage:
+                                                              CachedNetworkImageProvider(
+                                                                  containerUsersRecord
+                                                                      .photoUrl),
+                                                        ),
+                                                        title: Text(
+                                                            containerUsersRecord
+                                                                .displayName),
+                                                        subtitle: Text(
+                                                          dateTimeFormat(
+                                                              DateFormat
+                                                                  .ABBR_MONTH_WEEKDAY_DAY,
+                                                              listViewAppointmentsRecord
+                                                                  .time),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          showDatePicker(
+                                                              context: context,
+                                                              firstDate: DateTime
+                                                                      .now()
+                                                                  .add(const Duration(
+                                                                      days: 1)),
+                                                              lastDate:
+                                                                  DateTime.now()
+                                                                      .add(
+                                                                const Duration(
+                                                                    days: 90),
+                                                              )).then(
+                                                            (value) {
+                                                              if (value !=
+                                                                  null) {
+                                                                showSnackbar(
+                                                                    context,
+                                                                    "Updating time");
+                                                                DateTime
+                                                                    newDate =
+                                                                    value
+                                                                        .copyWith(
+                                                                  hour:
+                                                                      listViewAppointmentsRecord
+                                                                          .time!
+                                                                          .hour,
+                                                                  minute:
+                                                                      listViewAppointmentsRecord
+                                                                          .time!
+                                                                          .minute,
+                                                                );
+                                                                listViewAppointmentsRecord
+                                                                    .reference
+                                                                    .update(
+                                                                        mapToFirestore(
+                                                                  <String,
+                                                                      dynamic>{
+                                                                    'time':
+                                                                        newDate,
+                                                                  }.withoutNulls,
+                                                                ))
+                                                                    .then((_) {
+                                                                  showSnackbar(
+                                                                      context,
+                                                                      "appointment updated");
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                });
+                                                              }
+                                                            },
+                                                          );
+                                                        },
+                                                        style: TextButton
+                                                            .styleFrom(
+                                                          foregroundColor:
+                                                              Colors.white,
+                                                          backgroundColor:
+                                                              Theme.of(context)
+                                                                  .primaryColor,
+                                                        ),
+                                                        child: const Text(
+                                                            "Change Appointment Date"),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 20,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
                                         ),
                                         InkWell(
                                           splashColor: Colors.transparent,
@@ -408,7 +549,8 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => const Reminder()
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(200.0, 0.0, 0.0, 10.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(200.0, 0.0, 0.0, 10.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed('select_categories1');
@@ -416,10 +558,10 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => const Reminder()
                   text: 'New Appointment',
                   options: FFButtonOptions(
                     height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        24.0, 0.0, 24.0, 0.0),
+                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Raleway',

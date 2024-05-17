@@ -4,7 +4,7 @@
             "outputFile": "com.mycompany.appointmentscheduling.app-mergeDebugResources-33:/values-v31/values-v31.xml",
             "map": [
                 {
-                    "source": "D:\\appointment_scheduling_new\\appointment_scheduling\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
+                    "source": "/home/faj/Desktop/Appointment_mobile/appointment_scheduling/android/app/src/main/res/values-v31/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
