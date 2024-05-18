@@ -50,8 +50,8 @@ class _SelectCategories1WidgetState extends State<SelectCategories1Widget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -105,8 +105,8 @@ class _SelectCategories1WidgetState extends State<SelectCategories1Widget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            20.0, 5.0, 0.0, 0.0),
                         child: Text(
                           'Step 1: Select Category',
                           style:
@@ -124,7 +124,8 @@ class _SelectCategories1WidgetState extends State<SelectCategories1Widget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -146,8 +147,8 @@ class _SelectCategories1WidgetState extends State<SelectCategories1Widget> {
                       ),
                     ),
                     child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 10.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -203,197 +204,218 @@ class _SelectCategories1WidgetState extends State<SelectCategories1Widget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Container(
-                  width: 350.0,
-                  height: 100.0,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFD9E4F5),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    context.pushNamed('Doctors');
+                  },
+                  child: Container(
+                    width: 350.0,
+                    height: 100.0,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFD9E4F5),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Container(
-                            width: 73.0,
-                            height: 77.0,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFD9D9D9),
-                            ),
-                            child: ClipRRect(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/cil_healing.png',
-                                width: 200.0,
-                                height: 100.0,
-                                fit: BoxFit.cover,
+                            ),
+                            child: Container(
+                              width: 73.0,
+                              height: 77.0,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFD9D9D9),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/cil_healing.png',
+                                  width: 200.0,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Curative',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Raleway',
-                                    color: const Color(0xFF1D4A8E),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              40.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Curative',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Raleway',
+                                  color: const Color(0xFF1D4A8E),
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Container(
-                  width: 350.0,
-                  height: 100.0,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFD9E4F5),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    context.pushNamed('Doctors');
+                  },
+                  child: Container(
+                    width: 350.0,
+                    height: 100.0,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFD9E4F5),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Container(
-                            width: 88.0,
-                            height: 75.0,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFD9D9D9),
-                            ),
-                            child: ClipRRect(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Vector_(3).png',
-                                width: 20.0,
-                                height: 10.0,
-                                fit: BoxFit.cover,
+                            ),
+                            child: Container(
+                              width: 88.0,
+                              height: 75.0,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFD9D9D9),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/Vector_(3).png',
+                                  width: 20.0,
+                                  height: 10.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Preventive',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Raleway',
-                                    color: const Color(0xFF1D4A8E),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              40.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Preventive',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Raleway',
+                                  color: const Color(0xFF1D4A8E),
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Container(
-                  width: 350.0,
-                  height: 100.0,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFD9E4F5),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    context.pushNamed('Doctors');
+                  },
+                  child: Container(
+                    width: 350.0,
+                    height: 100.0,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFD9E4F5),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Container(
-                            width: 73.0,
-                            height: 77.0,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFD9D9D9),
-                            ),
-                            child: ClipRRect(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/map_pharmacy.png',
-                                width: 200.0,
-                                height: 100.0,
-                                fit: BoxFit.cover,
+                            ),
+                            child: Container(
+                              width: 73.0,
+                              height: 77.0,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFD9D9D9),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/map_pharmacy.png',
+                                  width: 200.0,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Pharmacy',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Raleway',
-                                    color: const Color(0xFF1D4A8E),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              40.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Pharmacy',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Raleway',
+                                  color: const Color(0xFF1D4A8E),
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
