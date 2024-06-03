@@ -1,11 +1,11 @@
-#Sat May 18 13:02:33 EAT 2024
-base.0=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
-base.2=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.3=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
-base.4=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
-base.5=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
-base.6=/home/faj/Desktop/Appointment_mobile/appointment_scheduling/build/app/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
+#Mon Jun 03 13:38:48 EAT 2024
+base.0=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.5=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.6=D\:\\appointment_scheduling_new\\appointment_scheduling_new\\appointment_scheduling\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=0/classes.dex
