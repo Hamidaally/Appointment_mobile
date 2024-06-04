@@ -312,6 +312,7 @@ class FirebaseAuthManager extends AuthManager
     String authProvider,
     String email,
     String password,
+    {String? phone}
   ) async {
     UserCredential? userCredential =
         await emailCreateAccountFunc(email, password).then((_) => _,

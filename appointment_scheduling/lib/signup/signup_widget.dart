@@ -1,3 +1,5 @@
+import 'package:appointment_scheduling/backend/schema/users_record.dart';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -363,6 +365,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           );
                                           if (user == null) {
                                             return;
+                                          }
+                                          if (_model.phoneNumberTextController
+                                              .text.isNotEmpty) {
+                                            currentUserReference!
+                                                .update(createUsersRecordData(
+                                              phoneNumber: "0${_model
+                                                      .phoneNumberTextController
+                                                      .text}",
+                                            ));
                                           }
 
                                           context.goNamedAuth(

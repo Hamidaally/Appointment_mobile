@@ -10,8 +10,11 @@ Future<UserCredential?> emailSignInFunc(
 Future<UserCredential?> emailCreateAccountFunc(
   String email,
   String password,
+
 ) =>
     FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email.trim(),
       password: password,
     );
+
+
