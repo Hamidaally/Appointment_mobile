@@ -230,7 +230,7 @@ class _DoctorsWidgetState extends State<DoctorsWidget>
                           ),
                   dateStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Raleway',
-                        color: const Color(0x02FFFFFF),
+                        color: Colors.black,
                         letterSpacing: 0.0,
                       ),
                   selectedDateStyle:

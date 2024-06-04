@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">1098062153648</string>
-    <string name="google_api_key" translatable="false">AIzaSyDrMYwS_0wJWOD22YXzStKjzHzn0i2wx4E</string>
-    <string name="google_app_id" translatable="false">1:1098062153648:android:81617bd14d47c07dfa3875</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDrMYwS_0wJWOD22YXzStKjzHzn0i2wx4E</string>
-    <string name="google_storage_bucket" translatable="false">appointment-scheduling-h0t6af.appspot.com</string>
-    <string name="project_id" translatable="false">appointment-scheduling-h0t6af</string>
-</resources>

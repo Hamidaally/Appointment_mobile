@@ -82,11 +82,11 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget>
           title: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(90.0, 0.0, 0.0, 0.0),
             child: Text(
-              'Appointments',
+              'iCARE Appointments System',
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).primary,
-                    fontSize: 24.0,
+                    fontSize: 16.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
                   ),
