@@ -58,9 +58,14 @@ class AppointmentsRecord extends FirestoreRecord {
   ) =>
       AppointmentsRecord._(reference, mapFromFirestore(data));
 
+
+
   @override
-  String toString() =>
-      'AppointmentsRecord(reference: ${reference.path}, data: $snapshotData)';
+  String toString() {
+    // 'AppointmentsRecord(reference: ${reference.path}, data: ${snapshotData.})'
+    snapshotData.addAll({'ref': reference.toString()});
+    return snapshotData.toString();
+  }
 
   @override
   int get hashCode => reference.path.hashCode;

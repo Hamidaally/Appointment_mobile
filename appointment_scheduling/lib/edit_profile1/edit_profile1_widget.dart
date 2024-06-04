@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
@@ -27,13 +29,19 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
     super.initState();
     _model = createModel(context, () => EditProfile1Model());
 
-    _model.yourNameTextController ??= TextEditingController();
+    _model.yourNameTextController ??= TextEditingController(
+      text: currentUserDisplayName,
+    );
     _model.yourNameFocusNode ??= FocusNode();
 
-    _model.emailTextController ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController(
+      text: currentUserEmail,
+    );
     _model.emailFocusNode ??= FocusNode();
 
-    _model.phoneNumberTextController ??= TextEditingController();
+    _model.phoneNumberTextController ??= TextEditingController(
+      text: currentPhoneNumber,
+    );
     _model.phoneNumberFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -72,144 +80,20 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: Colors.white,
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(100.0),
-            child: AppBar(
-              backgroundColor: Colors.white,
-              automaticallyImplyLeading: false,
-              actions: const [],
-              flexibleSpace: FlexibleSpaceBar(
-                title: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 0.0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30.0,
-                                borderWidth: 1.0,
-                                buttonSize: 50.0,
-                                icon: const Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Color(0xFF14181B),
-                                  size: 30.0,
-                                ),
-                                onPressed: () async {
-                                  context.pushNamed('profile');
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Edit your Profile',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: 'Outfit',
-                                color: const Color(0xFF14181B),
-                                fontSize: 22.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderColor: FlutterFlowTheme.of(context).primary,
-                            borderRadius: 20.0,
-                            borderWidth: 1.0,
-                            buttonSize: 40.0,
-                            fillColor: FlutterFlowTheme.of(context).accent1,
-                            icon: Icon(
-                              Icons.cloud_upload,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              final selectedMedia =
-                                  await selectMediaWithSourceBottomSheet(
-                                context: context,
-                                allowPhoto: true,
-                              );
-                              if (selectedMedia != null &&
-                                  selectedMedia.every((m) => validateFileFormat(
-                                      m.storagePath, context))) {
-                                setState(() => _model.isDataUploading2 = true);
-                                var selectedUploadedFiles = <FFUploadedFile>[];
-
-                                try {
-                                  selectedUploadedFiles = selectedMedia
-                                      .map((m) => FFUploadedFile(
-                                            name: m.storagePath.split('/').last,
-                                            bytes: m.bytes,
-                                            height: m.dimensions?.height,
-                                            width: m.dimensions?.width,
-                                            blurHash: m.blurHash,
-                                          ))
-                                      .toList();
-                                } finally {
-                                  _model.isDataUploading2 = false;
-                                }
-                                if (selectedUploadedFiles.length ==
-                                    selectedMedia.length) {
-                                  setState(() {
-                                    _model.uploadedLocalFile2 =
-                                        selectedUploadedFiles.first;
-                                  });
-                                } else {
-                                  setState(() {});
-                                  return;
-                                }
-                              }
-                            },
-                          ),
-                          Text(
-                            'Edit Photo',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Raleway',
-                                  color: const Color(0xFF1559C0),
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                centerTitle: true,
-                expandedTitleScale: 1.0,
-              ),
-              elevation: 0.0,
-            ),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            automaticallyImplyLeading: true,
+            title: const Text("Update Your Profile"),
+            elevation: 0,
           ),
-          body: SafeArea(
-            top: true,
+          body: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 6.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -273,6 +157,8 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                                 _model.uploadedLocalFile1 =
                                     selectedUploadedFiles.first;
                                 _model.uploadedFileUrl1 = downloadUrls.first;
+                                updateUserDocument(
+                                    photoUrl: downloadUrls.first);
                               });
                               showUploadMessage(context, 'Success!');
                             } else {
@@ -299,9 +185,9 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
-                              child: Image.asset(
-                                'assets/images/Ellipse_3.png',
-                                fit: BoxFit.fitWidth,
+                              child: Image.network(
+                                currentUserPhoto,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -310,9 +196,82 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                     ],
                   ),
                 ),
+                TextButton(
+                  onPressed: () async {
+                    final selectedMedia =
+                        await selectMediaWithSourceBottomSheet(
+                      context: context,
+                      imageQuality: 80,
+                      allowPhoto: true,
+                      backgroundColor: const Color(0xFFF1F4F8),
+                      textColor: const Color(0xFF14181B),
+                      pickerFontFamily: 'Outfit',
+                    );
+                    if (selectedMedia != null &&
+                        selectedMedia.every((m) =>
+                            validateFileFormat(m.storagePath, context))) {
+                      setState(() => _model.isDataUploading1 = true);
+                      var selectedUploadedFiles = <FFUploadedFile>[];
+
+                      var downloadUrls = <String>[];
+                      try {
+                        showUploadMessage(
+                          context,
+                          'Uploading file...',
+                          showLoading: true,
+                        );
+                        selectedUploadedFiles = selectedMedia
+                            .map((m) => FFUploadedFile(
+                                  name: m.storagePath.split('/').last,
+                                  bytes: m.bytes,
+                                  height: m.dimensions?.height,
+                                  width: m.dimensions?.width,
+                                  blurHash: m.blurHash,
+                                ))
+                            .toList();
+
+                        downloadUrls = (await Future.wait(
+                          selectedMedia.map(
+                            (m) async =>
+                                await uploadData(m.storagePath, m.bytes),
+                          ),
+                        ))
+                            .where((u) => u != null)
+                            .map((u) => u!)
+                            .toList();
+                      } finally {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        _model.isDataUploading1 = false;
+                      }
+                      if (selectedUploadedFiles.length ==
+                              selectedMedia.length &&
+                          downloadUrls.length == selectedMedia.length) {
+                        setState(() {
+                          _model.uploadedLocalFile1 =
+                              selectedUploadedFiles.first;
+                          _model.uploadedFileUrl1 = downloadUrls.first;
+                        });
+                        updateUserDocument(photoUrl: downloadUrls.first);
+                        showUploadMessage(context, 'Success!');
+                      } else {
+                        setState(() {});
+                        showUploadMessage(context, 'Failed to upload data');
+                        return;
+                      }
+                    }
+                  },
+                  child: Text(
+                    'Edit Photo',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Raleway',
+                          color: const Color(0xFF1559C0),
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      20.0, 0.0, 20.0, 16.0),
                   child: AuthUserStreamWidget(
                     builder: (context) => TextFormField(
                       controller: _model.yourNameTextController,
@@ -320,7 +279,7 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: currentUserDisplayName,
+                        labelText: "Display Name",
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Plus Jakarta Sans',
@@ -337,6 +296,13 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFFE0E3E7),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                             color: Color(0xFFE0E3E7),
@@ -383,15 +349,15 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      20.0, 0.0, 20.0, 16.0),
                   child: TextFormField(
                     controller: _model.emailTextController,
                     focusNode: _model.emailFocusNode,
                     textCapitalization: TextCapitalization.words,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: currentUserEmail,
+                      labelText: "Email",
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Plus Jakarta Sans',
@@ -438,8 +404,8 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 24.0, 0.0, 24.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Plus Jakarta Sans',
@@ -453,15 +419,17 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      20.0, 0.0, 20.0, 16.0),
                   child: TextFormField(
                     controller: _model.phoneNumberTextController,
                     focusNode: _model.phoneNumberFocusNode,
                     textCapitalization: TextCapitalization.words,
                     obscureText: false,
+                    keyboardType: TextInputType.number,
+                    maxLength: 10,
                     decoration: InputDecoration(
-                      labelText: editProfile1UsersRecord.phoneNumber,
+                      labelText: "Phone Number",
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Plus Jakarta Sans',
@@ -508,8 +476,8 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 24.0, 0.0, 24.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Plus Jakarta Sans',
@@ -523,14 +491,14 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await currentUserReference!.update(createUsersRecordData(
                         email: _model.emailTextController.text,
                         displayName: _model.yourNameTextController.text,
                         phoneNumber: _model.phoneNumberTextController.text,
-                        photoUrl: _model.uploadedFileUrl1,
                       ));
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -549,10 +517,10 @@ class _EditProfile1WidgetState extends State<EditProfile1Widget> {
                     text: 'Save changes',
                     options: FFButtonOptions(
                       height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          24.0, 0.0, 24.0, 0.0),
+                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 0.0),
                       color: const Color(0xFF469BFF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(

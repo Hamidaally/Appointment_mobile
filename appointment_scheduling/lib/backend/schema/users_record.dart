@@ -65,12 +65,17 @@ class UsersRecord extends FirestoreRecord {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
     _photoUrl = snapshotData['photo_url'] as String?;
+     _photoUrl = snapshotData['photo_url'] as String?;
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _nationalId = castToType<int>(snapshotData['national_id']);
     _password = castToType<int>(snapshotData['password']);
     _role = snapshotData['role'] as String?;
+  }
+
+  set setUpdatePhoto(String url) {
+    _photoUrl = url;
   }
 
   static CollectionReference get collection =>

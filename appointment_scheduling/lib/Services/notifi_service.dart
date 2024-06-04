@@ -1,10 +1,15 @@
+import 'package:appointment_scheduling/backend/backend.dart';
+import 'package:appointment_scheduling/backend/schema/appointments_record.dart';
+import 'package:appointment_scheduling/manage_reminders/manage_reminders_widget.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
-  final FlutterLocalNotificationsPlugin notificationsPlugin =
+  static final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
+
+  static List<PendingNotificationRequest> pending = [];
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
@@ -22,9 +27,13 @@ class NotificationService {
     await notificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse:
             (NotificationResponse notificationResponse) async {});
+
+    notificationsPlugin.pendingNotificationRequests().then((value) {
+      pending = value;
+    });
   }
 
-  notificationDetails() {
+  static notificationDetails() {
     return const NotificationDetails(
         android: AndroidNotificationDetails('channelId', 'channelName',
             importance: Importance.max, priority: Priority.high),
@@ -37,23 +46,41 @@ class NotificationService {
         id, title, body, await notificationDetails());
   }
 
-  Future scheduleNotification(
+  static Future scheduleNotification(
       {int id = 0,
       String? title,
       String? body,
       String? payLoad,
       required DateTime scheduledNotificationDateTime}) async {
-    return notificationsPlugin.zonedSchedule(
-        id,
-        title,
-        body,
-        tz.TZDateTime.from(
-          scheduledNotificationDateTime,
-          tz.local,
-        ),
-        await notificationDetails(),
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
+    return notificationsPlugin
+        .zonedSchedule(
+      id,
+      title,
+      body,
+      tz.TZDateTime.from(
+        scheduledNotificationDateTime,
+        tz.local,
+      ),
+      await notificationDetails(),
+      androidAllowWhileIdle: true,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+    )
+        .then((_) {
+      notificationsPlugin.pendingNotificationRequests().then((value) {
+        pending = value;
+      });
+    });
+  }
+
+  static void getScheduled(List<AppointmentsRecord> records) {
+    scheduled = [];
+    for (AppointmentsRecord record in records) {
+      if (pending.any((element) {
+        return record.reference.id == element.body!;
+      })) {
+        scheduled.add(record);
+      }
+    }
   }
 }

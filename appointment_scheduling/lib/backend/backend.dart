@@ -255,7 +255,15 @@ Future maybeCreateUser(User user) async {
   currentUserDocument = UsersRecord.getDocumentFromData(userData, userRecord);
 }
 
-Future updateUserDocument({String? email}) async {
-  await currentUserDocument?.reference
-      .update(createUsersRecordData(email: email));
+Future updateUserDocument(
+    {String? email,
+    String? photoUrl,
+    String? displayName,
+    String? phone}) async {
+  await currentUserDocument?.reference.update(createUsersRecordData(
+    photoUrl: photoUrl,
+    email: email,
+    displayName: displayName,
+    phoneNumber: phone,
+  ));
 }

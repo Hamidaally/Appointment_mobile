@@ -13,6 +13,7 @@ import 'index.dart';
 import 'Services/notifi_service.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
@@ -80,7 +81,9 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en', ''),
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: false,
